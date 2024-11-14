@@ -6,7 +6,7 @@ public class Carafe {
 	
 	public Carafe(int capacite) {
 		this.capacite_ = capacite;
-		vider();
+		Vider();
 	}
 	
 	public void Remplir() {
@@ -17,16 +17,27 @@ public class Carafe {
 		this.contenu_ = 0;
 	}
 	
-	public void Contenu() {
+	public int Contenu() {
 		return this.contenu_;
+	}
+	
+	public void Contenu(int contenu) {
+		this.contenu_ = contenu;
 	}
 	
 	public void Capacité() {
 		return this.capacite_;
 	}
 	
-	public void Transvaser() {
-		
+	public void Transvaser(Carafe c) {
+		int reste = this.capacite_ - this.contenu_;
+		if (c.Contenu() <= reste) {
+			this.Contenu(Contenu() + c.Contenu());
+			c.Vider();
+		}
+		else {
+			c.Contenu(c.Contenu() - reste);
+			this.Remplir();
 	}
 		
 }
